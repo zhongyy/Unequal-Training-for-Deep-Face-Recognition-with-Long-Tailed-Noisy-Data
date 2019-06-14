@@ -6,9 +6,9 @@ This is the code of CVPR 2019 paper《Unequal Training for Deep Face Recognition
 
 ## Usage Instructions
 
-1. Our method need two stage training, therefore the code is also stepwise. I will be happy if my humble code would help you. If there are questions or issues, please let me know. 
+1. The code is adopted from [InsightFace](https://github.com/deepinsight/insightface). I sincerely appreciate for their contributions.
 
-2. The code is adopted from [InsightFace](https://github.com/deepinsight/insightface). I sincerely appreciate for their contributions.
+2. Our method need two stage training, therefore the code is also stepwise. I will be happy if my humble code would help you. If there are questions or issues, please let me know. 
 
 ### Prepare the code and the data.
 
