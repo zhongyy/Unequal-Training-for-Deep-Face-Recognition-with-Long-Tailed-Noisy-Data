@@ -2,6 +2,8 @@
 
 This is the code of CVPR 2019 paper《Unequal Training for Deep Face Recognition with Long Tailed Noisy Data》.
 
+![](https://github.com/zhongyy/Deep-Difference-Analysis-in-Similar-looking-face-recognition/blob/master/zhou.jpg)
+
 ## Usage Instructions
 
 1. Our method need two stage training, therefore our code is also stepwise. I will be happy if my humble code would help you. If there are questions or issues, please let me know. 
@@ -59,4 +61,17 @@ CUDA_VISIBLE_DEVICES='0,1,2,3,4,5,6,7' python -u train_debug_soft_gs.py --networ
 1. We use the last arcface model (best performance) to find the third type noise. Next we drop the fc weight of the last arcface model, then finetune from it using NR loss (adding a reweight term by putting more confidence in the prediction of the training model). 
 
 2. The second stage training process need very careful manual tuning. We provide our training log for reference. 
+
+### Result:
+
+| Method           | m1   | m2   | m3   | LFW   | CFP-FP | AgeDB-30 |
+| ---------------- | ---- | ---- | ---- | ----- | ------ | -------- |
+| W&F Norm Softmax | 1    | 0    | 0    | 99.28 | 88.50  | 95.13    |
+| SphereFace       | 1.5  | 0    | 0    | 99.76 | 94.17  | 97.30    |
+| CosineFace       | 1    | 0    | 0.35 | 99.80 | 94.4   | 97.91    |
+| ArcFace          | 1    | 0.5  | 0    | 99.83 | 94.04  | 98.08    |
+| Combined Margin  | 1.2  | 0.4  | 0    | 99.80 | 94.08  | 98.05    |
+| Combined Margin  | 1.1  | 0    | 0.35 | 99.81 | 94.50  | 98.08    |
+| Combined Margin  | 1    | 0.3  | 0.2  | 99.83 | 94.51  | 98.13    |
+| Combined Margin  | 0.9  | 0.4  | 0.15 | 99.83 | 94.20  | 98.16    |
 
