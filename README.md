@@ -17,7 +17,8 @@ git clone https://github.com/zhongyy/Unequal-Training-for-Deep-Face-Recognition-
 ```
 
 3. download the MF2 dataset and the evaluation set, then place them in `unequal_code/MF2_pic9/` `unequal_code/MF2_pic9_tail/` and `unequal_code/eval_dataset/` respectively.
-dataset: [MF2](https://github.com/deepinsight/insightface). 
+
+Dataset: [MF2](https://github.com/deepinsight/insightface). 
 
 ### step 2: 
 Pretrain the head data with arcface.
