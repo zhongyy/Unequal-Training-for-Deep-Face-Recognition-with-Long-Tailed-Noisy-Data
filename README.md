@@ -1,6 +1,6 @@
 # Unequal-Training-for-Deep-Face-Recognition-with-Long-Tailed-Noisy-Data.
 
-This is the code of CVPR 2019 paper《Unequal Training for Deep Face Recognition with Long Tailed Noisy Data》.
+This is the code of CVPR 2019 paper[《Unequal Training for Deep Face Recognition with Long Tailed Noisy Data》](http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhong_Unequal-Training_for_Deep_Face_Recognition_With_Long-Tailed_Noisy_Data_CVPR_2019_paper.pdf).
 
 ![arch](https://github.com/zhongyy/Unequal-Training-for-Deep-Face-Recognition-with-Long-Tailed-Noisy-Data/blob/master/ACH10.jpg)
 
