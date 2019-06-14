@@ -2,7 +2,7 @@
 
 This is the code of CVPR 2019 paper《Unequal Training for Deep Face Recognition with Long Tailed Noisy Data》.
 
-![arch](https://github.com/zhongyy/Unequal-Training-for-Deep-Face-Recognition-with-Long-Tailed-Noisy-Data./blob/master/ACH10.jpg)
+![arch](https://github.com/zhongyy/Unequal-Training-for-Deep-Face-Recognition-with-Long-Tailed-Noisy-Data/blob/master/ACH10.jpg)
 
 ## Usage Instructions
 
@@ -19,7 +19,7 @@ pip install mxnet-cu90
 ```
 2. download the code as `unequal_code/`
 ```
-git clone https://github.com/zhongyy/Unequal-Training-for-Deep-Face-Recognition-with-Long-Tailed-Noisy-Data..git
+git clone https://github.com/zhongyy/Unequal-Training-for-Deep-Face-Recognition-with-Long-Tailed-Noisy-Data.git
 ```
 
 3. download the [MF2 training dataset](https://) and the [evaluation dataset](https://github.com/deepinsight/insightface/wiki/Dataset-Zoo), then place them in `unequal_code/MF2_pic9_head/` `unequal_code/MF2_pic9_tail/` and `unequal_code/eval_dataset/` respectively.
@@ -61,11 +61,5 @@ CUDA_VISIBLE_DEVICES='0,1,2,3,4,5,6,7' python -u train_debug_soft_gs.py --networ
 1. We use the last arcface model (best performance) to find the third type noise. Next we drop the fc weight of the last arcface model, then finetune from it using NR loss (adding a reweight term by putting more confidence in the prediction of the training model). 
 
 2. The second stage training process need very careful manual tuning. We provide our training log for reference. 
-
-### Result:
-
-| Method           | m1   | m2   | m3   | LFW   | CFP-FP | AgeDB-30 |
-| ---------------- | ---- | ---- | ---- | ----- | ------ | -------- |
-| W&F Norm Softmax | 1    | 0    | 0    | 0     | 0      | 0        |
 
 
