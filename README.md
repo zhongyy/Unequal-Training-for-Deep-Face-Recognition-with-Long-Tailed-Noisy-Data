@@ -10,6 +10,16 @@ This is the code of CVPR 2019 paper[《Unequal Training for Deep Face Recognitio
 
 2. Our method need two stage training, therefore the code is also stepwise. I will be happy if my humble code would help you. If there are questions or issues, please let me know. 
 
+
+## Note:
+
+1. Our method is appropriate for the noisy data with long-tailed distribution such as MF2 training dataset. When the training data is good, like MS1M and VGGFace2, [InsightFace](https://github.com/deepinsight/insightface) is more suitable.
+
+2. We use the last arcface model (best performance) to find the third type noise. Next we drop the fc weight of the last arcface model, then finetune from it using NR loss (adding a reweight term by putting more confidence in the prediction of the training model). 
+
+3. The second stage training process need very careful manual tuning. We provide our training log for reference. 
+
+
 ### Prepare the code and the data.
 
 1. Install `MXNet` with GPU support (Python 2.7).
@@ -22,7 +32,7 @@ pip install mxnet-cu90
 git clone https://github.com/zhongyy/Unequal-Training-for-Deep-Face-Recognition-with-Long-Tailed-Noisy-Data.git
 ```
 
-3. download the [MF2 training dataset](https://) and the [evaluation dataset](https://github.com/deepinsight/insightface/wiki/Dataset-Zoo), then place them in `unequal_code/MF2_pic9_head/` `unequal_code/MF2_pic9_tail/` and `unequal_code/eval_dataset/` respectively.
+3. download the [MF2 training dataset](https://pan.baidu.com/s/1rR4KT2tMbxyPbWwFip8lSQ)(password: w9y5) and the [evaluation dataset](https://github.com/deepinsight/insightface/wiki/Dataset-Zoo), then place them in `unequal_code/MF2_pic9_head/` `unequal_code/MF2_pic9_tail/` and `unequal_code/eval_dataset/` respectively.
 
 ### step 1: Pretrain MF2_pic9_head with [ArcFace](https://github.com/deepinsight/insightface).
 
@@ -48,7 +58,7 @@ CUDA_VISIBLE_DEVICES='0,1' python -u train_NR.py --network r50 --loss-type 4 --m
 
 ### step 3: 
 
-1. Generate the denoised head data using `./MF2_pic9_head/train.lst` and `0_noiselist.txt` which has been generated in step 2. (We provide our [denoised version](https://).)
+1. Generate the denoised head data using `./MF2_pic9_head/train.lst` and `0_noiselist.txt` which has been generated in step 2. (We provide our [denoised version](https://pan.baidu.com/s/1rR4KT2tMbxyPbWwFip8lSQ)(password: w9y5) 
 
 2. Using the denoised head data (have removed the third type noise) and the tail data to continue the second stage training. It's noting that the training process need finetune manually by increase the `--interweight` gradually. When you change the interweight, you also need change the pretrained model by yourself, because we could not know which is the best model in the last training stage unless we test the model on the target dataset (MF2 test). We always finetune from the best model in the last training stage.  
 
@@ -59,13 +69,4 @@ CUDA_VISIBLE_DEVICES='0,1,2,3,4,5,6,7' python -u train_debug_soft_gs.py --networ
 ```
 CUDA_VISIBLE_DEVICES='0,1,2,3,4,5,6,7' python -u train_debug_soft_gs.py --network r50 --loss-type 4 --data-dir ./MF2_pic9_head_denoise/ --data-dir-interclass ./MF2_pic9_tail/ --end-epoch 100000 --lr 0.001 --interweight 5 --bag-size 3600 --batch-size1 360 --batchsize_id 360 --batch-size2 40  --pretrained ../models/model_all/model,xx --prefix ../models/model_all/model_s2 2>&1|tee all_r50_s2.log
 ```
-
-### Note:
-
-1. Our method is appropriate for the noisy data with long-tailed distribution such as MF2 training dataset. When the training data is good, like MS1M and VGGFace2, [InsightFace](https://github.com/deepinsight/insightface) is more suitable.
-
-2. We use the last arcface model (best performance) to find the third type noise. Next we drop the fc weight of the last arcface model, then finetune from it using NR loss (adding a reweight term by putting more confidence in the prediction of the training model). 
-
-3. The second stage training process need very careful manual tuning. We provide our training log for reference. 
-
 
