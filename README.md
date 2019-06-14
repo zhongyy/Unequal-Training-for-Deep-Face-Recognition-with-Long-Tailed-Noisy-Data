@@ -22,7 +22,7 @@ pip install mxnet-cu90
 git clone https://github.com/zhongyy/Unequal-Training-for-Deep-Face-Recognition-with-Long-Tailed-Noisy-Data..git
 ```
 
-3. download the [MF2](https://github.com/deepinsight/insightface) and the [evaluation dataset](https://github.com/deepinsight/insightface), then place them in `unequal_code/MF2_pic9_head/` `unequal_code/MF2_pic9_tail/` and `unequal_code/eval_dataset/` respectively.
+3. download the [MF2 training dataset](https://) and the [evaluation dataset](https://github.com/deepinsight/insightface/wiki/Dataset-Zoo), then place them in `unequal_code/MF2_pic9_head/` `unequal_code/MF2_pic9_tail/` and `unequal_code/eval_dataset/` respectively.
 
 ### step 1: Pretrain MF2_pic9_head with [ArcFace](https://github.com/deepinsight/insightface).
 
@@ -48,7 +48,7 @@ CUDA_VISIBLE_DEVICES='0,1' python -u train_relusoft_gs.py --network r50 --loss-t
 
 ### step 3: 
 
-1. Generate the denoised head data using `./MF2_pic9_head/train.lst` and `0_noiselist.txt` which has been generated in step 2. (We provide our version in [MF2](https://github.com/deepinsight/insightface).)
+1. Generate the denoised head data using `./MF2_pic9_head/train.lst` and `0_noiselist.txt` which has been generated in step 2. (We provide our [denoised version](https://).)
 
 2. Using the denoised head data (have removed the third type noise) and the tail data to continue the second stage training. It's noting that the training process need finetune manually by increase the `--interweight` gradually. When you change the interweight, you also need change the pretrained model by yourself, because we could not know which is the best model in the last training stage unless we test the model on the target dataset (MF2 test). We always finetune from the best model in the last training stage.  
 
