@@ -56,6 +56,10 @@ CUDA_VISIBLE_DEVICES='0,1' python -u train_relusoft_gs.py --network r50 --loss-t
 CUDA_VISIBLE_DEVICES='0,1,2,3,4,5,6,7' python -u train_debug_soft_gs.py --network r50 --loss-type 4 --data-dir ./MF2_pic9_head_denoise/ --data-dir-interclass ./MF2_pic9_tail/ --end-epoch 100000 --lr 0.001 --interweight 1 --bag-size 3600 --batch-size1 360 --batchsize_id 360 --batch-size2 40  --pretrained /home/zhongyaoyao/insightface/models/NRA_r50pic9/model,xx --prefix ../models/model_all/model 2>&1|tee all_r50.log
 ```
 
+```
+CUDA_VISIBLE_DEVICES='0,1,2,3,4,5,6,7' python -u train_debug_soft_gs.py --network r50 --loss-type 4 --data-dir ./MF2_pic9_head_denoise/ --data-dir-interclass ./MF2_pic9_tail/ --end-epoch 100000 --lr 0.001 --interweight 5 --bag-size 3600 --batch-size1 360 --batchsize_id 360 --batch-size2 40  --pretrained ../models/model_all/model,xx --prefix ../models/model_all/model_s2 2>&1|tee all_r50_s2.log
+```
+
 ### Note:
 
 1. Our method is appropriate for the noisy data with long-tailed distribution such as MF2 training dataset. When the training data is good, like MS1M and VGGFace2, [InsightFace](https://github.com/deepinsight/insightface) is more suitable.
