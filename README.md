@@ -66,12 +66,6 @@ CUDA_VISIBLE_DEVICES='0,1,2,3,4,5,6,7' python -u train_debug_soft_gs.py --networ
 
 | Method           | m1   | m2   | m3   | LFW   | CFP-FP | AgeDB-30 |
 | ---------------- | ---- | ---- | ---- | ----- | ------ | -------- |
-| W&F Norm Softmax | 1    | 0    | 0    | 99.28 | 88.50  | 95.13    |
-| SphereFace       | 1.5  | 0    | 0    | 99.76 | 94.17  | 97.30    |
-| CosineFace       | 1    | 0    | 0.35 | 99.80 | 94.4   | 97.91    |
-| ArcFace          | 1    | 0.5  | 0    | 99.83 | 94.04  | 98.08    |
-| Combined Margin  | 1.2  | 0.4  | 0    | 99.80 | 94.08  | 98.05    |
-| Combined Margin  | 1.1  | 0    | 0.35 | 99.81 | 94.50  | 98.08    |
-| Combined Margin  | 1    | 0.3  | 0.2  | 99.83 | 94.51  | 98.13    |
-| Combined Margin  | 0.9  | 0.4  | 0.15 | 99.83 | 94.20  | 98.16    |
+| W&F Norm Softmax | 1    | 0    | 0    | 0     | 0      | 0        |
+
 
