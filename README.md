@@ -6,9 +6,9 @@ This is the code of CVPR 2019 paper《Unequal Training for Deep Face Recognition
 
 ## Usage Instructions
 
-1. Our method need two stage training, therefore our code is also stepwise. I will be happy if my humble code would help you. If there are questions or issues, please let me know. 
+1. Our method need two stage training, therefore the code is also stepwise. I will be happy if my humble code would help you. If there are questions or issues, please let me know. 
 
-2. Our code is adopted from [InsightFace](https://github.com/deepinsight/insightface). I sincerely appreciate for their contributions.
+2. The code is adopted from [InsightFace](https://github.com/deepinsight/insightface). I sincerely appreciate for their contributions.
 
 ### Prepare the code and the data.
 
@@ -58,8 +58,10 @@ CUDA_VISIBLE_DEVICES='0,1,2,3,4,5,6,7' python -u train_debug_soft_gs.py --networ
 
 ### Note:
 
-1. We use the last arcface model (best performance) to find the third type noise. Next we drop the fc weight of the last arcface model, then finetune from it using NR loss (adding a reweight term by putting more confidence in the prediction of the training model). 
+1. Our method is appropriate for the noisy data with long-tailed distribution such as MF2 training dataset. When the training data is good, like MS1M and VGGFace2, [InsightFace](https://github.com/deepinsight/insightface) is more suitable.
 
-2. The second stage training process need very careful manual tuning. We provide our training log for reference. 
+2. We use the last arcface model (best performance) to find the third type noise. Next we drop the fc weight of the last arcface model, then finetune from it using NR loss (adding a reweight term by putting more confidence in the prediction of the training model). 
+
+3. The second stage training process need very careful manual tuning. We provide our training log for reference. 
 
 
