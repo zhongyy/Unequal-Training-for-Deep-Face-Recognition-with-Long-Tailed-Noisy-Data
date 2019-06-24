@@ -53,7 +53,7 @@ CUDA_VISIBLE_DEVICES='0,1' python -u train_NR_savemodel.py --network r50 --loss-
 2. End it when the acc of validation dataset(lfw, cfp-fp and agedb-30) does not ascend.
 
 ```
-CUDA_VISIBLE_DEVICES='0,1' python -u train_NR.py --network r50 --loss-type 4 --margin-m 0.5 --data-dir ./bin_dir/ --lr 0.01 --lr-steps 50000,90000 --per-batch-size 100 --prefix ../models/NRA_r50pic9/model --bin-dir ./bin_dir/ --pretrained ../models/NRA_r50pic9/model_t,0 2>&1|tee NRA_r50pic9.log
+CUDA_VISIBLE_DEVICES='0,1' python -u train_NR.py --network r50 --loss-type 4 --margin-m 0.5 --data-dir ./MF2_pic9_head/ --lr 0.01 --lr-steps 50000,90000 --per-batch-size 100 --prefix ../models/NRA_r50pic9/model --bin-dir ./bin_dir/ --pretrained ../models/NRA_r50pic9/model_t,0 2>&1|tee NRA_r50pic9.log
 ```
 
 ### step 3: 
